@@ -5,21 +5,21 @@ import org.openqa.selenium.support.PageFactory;
 
 
 public class PrincipalPage {
-    WebDriver driver;
-    PrincipalMap principalMap;
+     WebDriver driver;
+     PrincipalMap principalMap;
 
-    public PrincipalPage(WebDriver driver) {
-        this.driver = driver;
-        principalMap = new PrincipalMap();
-        PageFactory.initElements(driver, principalMap);
+     public PrincipalPage(WebDriver driver) {
+         this.driver = driver;
+         principalMap = new PrincipalMap();
+         PageFactory.initElements(driver, principalMap);
 
-    }
+     }
 
-    public String getTitulo() {
-        return principalMap.txtTitulo.getText();
-    }
+     public String getTitulo() {
+         return principalMap.txtTitulo.getText();
+     }
 
-    public void clicBotao() {
-        principalMap.btnTitulo.click();
-    }
-}
+     public void clicBotao() {
+         principalMap.btnTitulo.click();
+     }
+ }

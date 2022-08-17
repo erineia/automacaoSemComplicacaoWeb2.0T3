@@ -8,14 +8,14 @@ public class CursoPage {
     WebDriver driver;
     CursoMap cursoMap;
 
-    public CursoPage(WebDriver driver) {
-        this.driver = driver;
-        cursoMap = new CursoMap();
-        PageFactory.initElements(driver, cursoMap);
-    }
+     public CursoPage(WebDriver driver) {
+         this.driver = driver;
+         cursoMap = new CursoMap();
+         PageFactory.initElements(driver, cursoMap);
+     }
 
-    public String getTitulo2() {
-        return cursoMap.txtTitulo.getText();
-    }
+     public String getTitulo2() {
+         return cursoMap.txtTitulo.getText();
+     }
 
-}
+ }
