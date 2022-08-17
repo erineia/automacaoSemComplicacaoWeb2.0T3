@@ -16,34 +16,34 @@ import static org.junit.Assert.*;
 
 public class TesteWeb {
 
-    WebDriver driver;
-    Driver driverWeb;
-    PrincipalPage principalPage;
-    CursoPage cursoPage;
+     WebDriver driver;
+     Driver driverWeb;
+     PrincipalPage principalPage;
+     CursoPage cursoPage;
 
-    @Before
-    public void inicializaTeste() {
-        driverWeb = new Driver("chrome");
-        driver = driverWeb.getDriver();
-        driver.get("https://www.chronosacademy.com.br");
-        principalPage = new PrincipalPage(driver);
+     @Before
+     public void inicializaTeste() {
+         driverWeb = new Driver("chrome");
+         driver = driverWeb.getDriver();
+         driver.get("https://www.chronosacademy.com.br");
+         principalPage = new PrincipalPage(driver);
     }
 
-    @Test
-    public void primeiroTeste() {
-        assertEquals("Porque Tempo É Conhecimento", principalPage.getTitulo());
-    }
+     @Test
+     public void primeiroTeste() {
+         assertEquals("Porque Tempo É Conhecimento", principalPage.getTitulo());
+     }
 
-    @Test
-    public void segundoTeste() {
-        cursoPage = new CursoPage(driver);
-        principalPage.clicBotao();
-        assertEquals("Conheça todos os nossos cursos", cursoPage.getTitulo2());
-    }
+     @Test
+     public void segundoTeste() {
+         cursoPage = new CursoPage(driver);
+         principalPage.clicBotao();
+         assertEquals("Conheça todos os nossos cursos", cursoPage.getTitulo2());
+     }
 
-    @After
-    public void finalizaTeste() {
-        driver.quit();
-    }
+     @After
+     public void finalizaTeste() {
+         driver.quit();
+     }
 
-}
+ }
