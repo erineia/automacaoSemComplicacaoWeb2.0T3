@@ -9,11 +9,13 @@ public class LoginPage {
     LoginMap loginMap;
 
     public LoginPage() {
-        this.loginMap = loginMap;
+        loginMap = new LoginMap();
         PageFactory.initElements(Driver.getDriver(), loginMap);
     }
 
-    public void clickBtnLogin(){
+    public void clickBtnLogin()  {
+        Driver.visibilityOf(loginMap.btnLogin);
+
         loginMap.btnLogin.click();
     }
 
@@ -45,6 +47,18 @@ public class LoginPage {
 
     public boolean isBtnSignIn(){
         return loginMap.btnSignIn.isEnabled();
+    }
+
+    public void visibilityOfBtnFechar(){
+        Driver.visibilityOf(loginMap.btnFechar);
+    }
+
+    public void invisibilityOfBtnFechar(){
+        Driver.invisibilityOf(loginMap.btnFechar);
+    }
+
+    public void aguardaLoader(){
+        Driver.atributoChange(loginMap.divLoader, "display", "none");
     }
 
 
