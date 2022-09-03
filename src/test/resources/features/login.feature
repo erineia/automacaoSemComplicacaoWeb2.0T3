@@ -14,11 +14,12 @@ Funcionalidade: Login
     Quando for realizado um clique no ícone de fechar
     Entao a janela modal deve ser fechada
 
-    @CreateNewAccount
+  @CreateNewAccount
   Cenario: Link Create New Account
     Quando for realizado um clique no link Create New Account
     Entao a pagina Create Account deve ser exibida
 
+    @LoginComSucesso
   Esquema do Cenario: Realizar login com <identificacao>
     Quando os campos de login sejam preenchidos da seguinte forma
       | login    | <login>    |
@@ -29,9 +30,10 @@ Funcionalidade: Login
 
     Exemplos:
       | identificacao       | login   | password | remember |
-      | campos obrigatórios | chronos | senha    | false    |
-      | todos os campos     | chronos | senha    | true     |
+      | todos os campos     | chronos | Senha123 | false    |
+      | campos obrigatórios | chronos | Senha123 | true     |
 
+      @LoginInvalido
   Esquema do Cenario: Realizar login com <identificacao>
     Quando os campos de login sejam preenchidos da seguinte forma
       | login    | <login>    |
@@ -42,17 +44,17 @@ Funcionalidade: Login
 
     Exemplos:
       | identificacao    | login    | password | remember |
-      | usuário inválido | invalido | senha    | false    |
-      | senha inválida   | chronos  | invalida | false    |
+      | usuário inválido | invalido | Senha123 | false    |
+      | senha inválida   | chronos  | invalido | false    |
 
-    @DadosEmBranco
+  @DadosEmBranco
   Esquema do Cenario: Realizar login com <identificacao>
     Quando os campos de login sejam preenchidos da seguinte forma
-      | login    |       |
-      | password | senha |
-      | remember | false |
+      | login    | <login>     |
+      | password | <password>> |
+      | remember | <remember>  |
     Entao o botao sign in deve permanecer desabilitado
     Exemplos:
       | identificacao     | login   | password | remember |
-      | usuário em branco |         | senha    | false    |
+      | usuário em branco |         | Senha123 | false    |
       | senha em branco   | chronos |          | false    |
