@@ -10,6 +10,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
@@ -65,15 +66,16 @@ public class Driver {
         driver.manage().window().setSize(new Dimension(1200, 720));
     }
 
-    public static void visibilityOf(WebElement element){
+    public static void visibilityOf(WebElement element) {
         wait.until(ExpectedConditions.visibilityOf(element));
 
     }
-    public static void invisibilityOf(WebElement element){
+
+    public static void invisibilityOf(WebElement element) {
         wait.until(ExpectedConditions.invisibilityOf(element));
     }
 
-    public static void atributoChange(WebElement element, String atributo, String value){
+    public static void atributoChange(WebElement element, String atributo, String value) {
         wait.until(ExpectedConditions.attributeContains(element, atributo, value));
     }
 
@@ -81,7 +83,7 @@ public class Driver {
         return driver;
     }
 
-    public static void criarDiretorio(){
+    public static void criarDiretorio() {
         String caminho = "src/test/resources/evidencias";
         diretorio = new File(caminho + "/" + nomeCenario);
         diretorio.mkdir();
@@ -91,8 +93,20 @@ public class Driver {
 
     public static void printScreen(String passo) throws IOException {
         numPrint++;
-        File file = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         String caminho = diretorio.getPath() + "/" + numPrint + " - " + passo + ".png";
         FileUtils.copyFile(file, new File(caminho));
+    }
+
+    public static void aguardarOption(Select select) {
+        for (int i = 0; i < 6; i++) {
+            if (select.getOptions().size() > 1) {
+                return;
+            }
+            try {
+                Thread.sleep(500);
+            } catch (Exception e) {
+            }
+        }
     }
 }

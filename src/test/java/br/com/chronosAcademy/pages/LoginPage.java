@@ -2,7 +2,10 @@ package br.com.chronosAcademy.pages;
 
 import br.com.chronosAcademy.core.Driver;
 import br.com.chronosAcademy.maps.LoginMap;
+import io.cucumber.java.pt.Dado;
 import org.openqa.selenium.support.PageFactory;
+
+import java.util.Map;
 
 public class LoginPage {
 
@@ -70,6 +73,8 @@ public class LoginPage {
         Driver.visibilityOf(loginMap.txtErrorLogin);
         return loginMap.txtErrorLogin.getText();
     }
+
+
 
 
 }
