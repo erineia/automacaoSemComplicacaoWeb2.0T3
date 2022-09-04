@@ -1,22 +1,42 @@
 package br.com.chronosAcademy.steps;
 
+import br.com.chronosAcademy.core.Driver;
+import br.com.chronosAcademy.pages.LoginPage;
+import br.com.chronosAcademy.pages.NewAccountPage;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.Entao;
 import io.cucumber.java.pt.Quando;
+import org.junit.Assert;
+
+import java.util.Map;
 
 public class NewAccountSteps {
 
+    NewAccountPage newAccountPage;
+    String username;
+
     @Dado("que a pagina new account esteja sendo exibida")
     public void queAPaginaNewAccountEstejaSendoExibida() {
-        throw new io.cucumber.java.PendingException();
+        newAccountPage = new NewAccountPage();
+        Driver.getDriver().get("https://www.advantageonlineshopping.com/#/");
+        Driver.getDriver().get("https://www.advantageonlineshopping.com/#/register");
+        Assert.assertEquals("CREATE ACCOUNT", newAccountPage.getTextNewAccount());
     }
     @Quando("os campos do cadastro estiverem preenchido com")
-    public void osCamposDoCadastroEstiveremPreenchidoCom(io.cucumber.datatable.DataTable dataTable) {
+    public void osCamposDoCadastroEstiveremPreenchidoCom(Map<String, String> map) {
+        username = map.get("username");
+        newAccountPage.setInpUserName(map.get("username"));
+        newAccountPage.setInpEmail(map.get("email"));
+        newAccountPage.setInpPassword(map.get("password"));
+        newAccountPage.setInpConfirmPassword(map.get("password"));
+        newAccountPage.selectCoutry(map.get("country"));
+        newAccountPage.clickInpIngree();
+        newAccountPage.clickBtnRegister();
 
-        throw new io.cucumber.java.PendingException();
     }
     @Entao("deve ser possivel logar no sistema apos o cadastro")
     public void deveSerPossivelLogarNoSistemaAposOCadastro() {
-        throw new io.cucumber.java.PendingException();
+        LoginPage loginPage = new LoginPage();
+        Assert.assertEquals(username, loginPage.getUsuarioLogado());
     }
 }

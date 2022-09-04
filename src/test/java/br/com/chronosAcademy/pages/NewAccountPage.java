@@ -36,7 +36,8 @@ public class NewAccountPage {
 
     public void selectCoutry(String country){
         Select select = new Select(newAccountMap.slcCountry);
-        select.selectByVisibleText(country);
+       // Driver.aguardarOption(select);
+        //select.selectByVisibleText(country);
     }
 
     public void clickInpIngree(){
