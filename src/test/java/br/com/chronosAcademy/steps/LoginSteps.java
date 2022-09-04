@@ -6,6 +6,7 @@ import br.com.chronosAcademy.pages.LoginPage;
 import br.com.chronosAcademy.pages.NewAccountPage;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.Entao;
 import io.cucumber.java.pt.Quando;
@@ -20,13 +21,18 @@ public class LoginSteps {
     String username;
 
     @Before
-    public void iniciaNavegador() {
+    public void iniciaNavegador(Scenario cenario) {
         new Driver(Browser.CHROME);
+        Driver.setNomeCenario(cenario.getName());
+        Driver.criarDiretorio();
     }
 
     @After
-    public void fecharNavegador() {
+    public void fecharNavegador(Scenario cenario) {
+
         Driver.getDriver().quit();
+        System.out.println(Driver.getNomeCenario()+ " - " + cenario.getStatus());
+        System.out.println(cenario.isFailed());
     }
 
     @Dado("que a modal esteja sendo exibida")
